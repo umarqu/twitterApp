@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express('router');
+var config = require('../config.js');
+
+
 
 //get homepage
 router.get('/',ensureAuth,function(req,res){
@@ -7,9 +10,14 @@ router.get('/',ensureAuth,function(req,res){
 });
 
 
+router.get('/home',function(req,res){
+	res.render('home');
+});
+
+
 function ensureAuth(req,res,next){
 	if(req.isAuthenticated()){
-		return next(); // keep on going
+		return next(); 
 	}
 	else{
 		req.flash('error_msg', "You are not logged in");
@@ -18,5 +26,3 @@ function ensureAuth(req,res,next){
 }
 
 module.exports = router;
-
-

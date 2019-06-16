@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express('router');
 var passport = require('passport');
-
 var LocalStrategy = require('passport-local');
 var twitterStrategy = require('passport-twitter').Strategy; 
-
 var User = require('../models/user')
+
+
 //get homepage
 router.get('/register',function(req,res){
 	res.render('register');
@@ -34,13 +34,6 @@ router.post('/register',function(req,res){
 	var errors = req.validationErrors();
 
 	if(errors){
-		console.log(name);
-		console.log(email);
-		console.log(username);
-		console.log(password);
-
-
-		console.log('errr')
 		res.render('register',{
 			errors:errors
 		});
@@ -102,26 +95,6 @@ passport.use(new LocalStrategy(
    	});
   }));
 
-
-
-
-var twitterApp = function(user){
-passport.use(new twitterStrategy({
-	consumerKey:'uzC3cBPM3GqawU49ggRnPSZNx',
-	consumerSecret:'NVNHkv6a5J9tRIGN9jPrjYEPlXHNunNB8gtXSwv1snQXGGVBTC',
-	callbackURL:'http://localhost:3002/'
-},function(user,token, tokenSecret, profile, done) {
-		console.log("profile==="+profile);
-		console.log("token==="+token);
-		console.log("tokensecret==="+tokensecret);
-
-   		return callback(null,profile)
-  }));
-}
-
-router.get('/',function(req,res){
-	res.render('content')
-})
 
 router.post('/login',				//options object 
 	passport.authenticate('local',{successRedirect:'/',

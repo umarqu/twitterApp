@@ -2,9 +2,10 @@
   "name": "twitterapp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +13,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cancan": "^3.1.0",
+    "config": "^3.1.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "dotenv": "^6.0.0",
@@ -23,6 +25,7 @@
     "mongoose": "^5.2.5",
     "morgan": "^1.9.0",
     "npm": "^6.2.0",
+    "npm-check-updates": "^2.15.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4"

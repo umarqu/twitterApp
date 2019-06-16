@@ -8,6 +8,7 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
+const config = require('./config.js');
 
 const mongoose = require('mongoose');
 
@@ -22,8 +23,6 @@ const users = require('./routes/users');
 
 
 const app = express();
-const port = process.env.PORT;
-
 
 app.set('views', path.join(__dirname + 'views')); // set 
 app.engine('handlebars',exphbs({defaultLayout:'layout'}));
@@ -45,15 +44,15 @@ app.use(session({
 }));
 
 
-app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.initialize());
+//app.use(passport.session());
 
 //middleware for express-validator 
 app.use(expressValidator({
 	errorFormatter:function(param,msg,value){
 		var namespace = param.split('.')
 		,root = namespace.shift()
-		, formParam = root;
+		,formParam = root;
 	
 	while(namespace.length){
 		formParam += '[' + namepsace.shift() + ']';
@@ -83,9 +82,9 @@ app.use('/',routes);
 app.use('/users',users);
 
 // set port
+const port = 3001;
 app.set('port',(process.env.PORT || 3001));
 
-
 app.listen(port, () => {
-  console.log(`listening on port ${port }`);
+  	console.log(`This is on port ${port }`);
 });
