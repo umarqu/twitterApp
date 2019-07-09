@@ -17,7 +17,7 @@
       	<nav class="navbar bg-light">
       	<h3 class="text-muted">TwitterApp</h3>
           <ul class="nav">
-            <li role="presentation"> <a href="/home">Home</li>
+            <li role="presentation"> <a href="/twitter/return">Home</li>
             {{#if user}} <!-- if user s logged in-->
             	<li role="presentation"> <a href="/">Dashboard</a></li>
             	<li role="presentation"><a href="/users/logout">Logout</a></li>
@@ -38,7 +38,7 @@
         {{#if success_msg}}
         	<div class="alert alert-success">{{success_msg}}</div>
         {{/if}}
-        	
+
          {{#if error_msg}}
         	<div class="alert alert-danger">{{error_msg}}</div>
         {{/if}}
@@ -48,7 +48,7 @@
         {{/if}}
 
           {{{body}}}
-        	
+
         </div>
 
       </div>
