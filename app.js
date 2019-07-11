@@ -74,17 +74,31 @@ app.use(function(req,res,next){
 })
 
 
+/*
+passport.use(new TwitterStrategy({
+    consumerKey: config.consumerKey,
+    consumerSecret: config.consumerSecret,
+    callbackURL: "https://localhost:3001/auth/twitter/return"
+  },
+	function(token, tokenSecret, profile, done) {
+    done(null, profile);
+  }
+));
+*/
 
 passport.use(new TwitterStrategy({
     consumerKey: config.consumerKey,
     consumerSecret: config.consumerSecret,
     callbackURL: "https://localhost:3001/auth/twitter/return"
   },
-function(token, tokenSecret, profile, cb) {
-	User.findOrCreate({ twitterId: profile.id }, function (err, user) {
-		return cb(err, user);
-	});
-}
+  function(token, tokenSecret, profile, cb) {
+		console.log(config.consumerKey);
+		console.log(config.consumerSecret);
+
+    User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
 ));
 
 passport.deserializeUser(function(obj,callback){

@@ -15,11 +15,11 @@ router.get('/twitter/return',
   passport.authenticate('twitter'));
 
 router.get('/auth/twitter/return',
-  passport.authenticate('twitter', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/home');
-  });
+	  passport.authenticate('twitter', { failureRedirect: '/login' }),
+	  function(req, res) {
+	    // Successful authentication, redirect home.
+			res.redirect('/home');
+	  });
 
 function ensureAuth(req,res,next){
 	if(req.isAuthenticated()){
